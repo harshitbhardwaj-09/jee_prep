@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useMemo } from 'react';
@@ -7,6 +6,7 @@ import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
 import { ChapterList } from '@/components/ChapterList';
 import { mockChapters } from '@/data/mockData';
+import { allSubjectsChapters } from '@/data/allSubjectsData';
 import { FilterState } from '@/types';
 
 const Index = () => {
@@ -38,7 +38,7 @@ const Index = () => {
   };
 
   const filteredChapters = useMemo(() => {
-    let filtered = mockChapters.filter(chapter => {
+    let filtered = allSubjectsChapters.filter(chapter => {
       // Filter by subject
       if (chapter.subject !== activeSubject) return false;
       
