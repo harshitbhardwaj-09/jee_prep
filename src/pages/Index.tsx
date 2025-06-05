@@ -8,6 +8,9 @@ import { ChapterList } from '@/components/ChapterList';
 import { mockChapters } from '@/data/mockData';
 import { allSubjectsChapters } from '@/data/allSubjectsData';
 import { FilterState } from '@/types';
+import { MobileHeader } from '@/components/MobileHeader';
+import { SubjectTabs } from '@/components/SubjectTabs';
+import { useTheme } from 'next-themes';
 
 const Index = () => {
   const [activeSubject, setActiveSubject] = useState<'Physics' | 'Chemistry' | 'Mathematics'>('Physics');
@@ -20,6 +23,7 @@ const Index = () => {
     sortBy: 'name',
     sortOrder: 'asc'
   });
+  const { theme, setTheme } = useTheme();
 
   const handleSubjectChange = (subject: 'Physics' | 'Chemistry' | 'Mathematics') => {
     setActiveSubject(subject);
@@ -84,23 +88,39 @@ const Index = () => {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
-        <Sidebar 
-          activeSubject={activeSubject} 
-          onSubjectChange={handleSubjectChange} 
-        />
-        
-        <div className="flex-1">
+      <div className={`min-h-screen bg-gray-50 dark:bg-gray-900`}> 
+        {/* Mobile Header */}
+        <div className="block sm:hidden">
+          <MobileHeader theme={theme} setTheme={setTheme} />
+          <SubjectTabs activeSubject={activeSubject} onSubjectChange={handleSubjectChange} />
           <Header
             activeSubject={activeSubject}
             filters={filters}
             onFiltersChange={handleFiltersChange}
             chaptersCount={filteredChapters.length}
+            isMobile={true}
           />
-          
-          <main className="p-6">
-            <ChapterList chapters={filteredChapters} />
+          <main className="p-2">
+            <ChapterList chapters={filteredChapters} highlightWeak={filters.showWeakChapters} />
           </main>
+        </div>
+        {/* Desktop Layout */}
+        <div className="hidden sm:flex min-h-screen">
+          <Sidebar 
+            activeSubject={activeSubject} 
+            onSubjectChange={handleSubjectChange} 
+          />
+          <div className="flex-1">
+            <Header
+              activeSubject={activeSubject}
+              filters={filters}
+              onFiltersChange={handleFiltersChange}
+              chaptersCount={filteredChapters.length}
+            />
+            <main className="p-6">
+              <ChapterList chapters={filteredChapters} highlightWeak={filters.showWeakChapters} />
+            </main>
+          </div>
         </div>
       </div>
     </ThemeProvider>

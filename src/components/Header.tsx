@@ -45,24 +45,24 @@ export function Header({ activeSubject, filters, onFiltersChange, chaptersCount,
             options={['11', '12']}
             selectedValues={filters.classes}
             onSelectionChange={(values) => onFiltersChange({ classes: values })}
-            buttonClass="rounded-full px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+            buttonClass="rounded-full px-4 py-1 text-sm font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
           />
           <FilterDropdown
             label="Units"
             options={units}
             selectedValues={filters.units}
             onSelectionChange={(values) => onFiltersChange({ units: values })}
-            buttonClass="rounded-full px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+            buttonClass="rounded-full px-4 py-1 text-sm font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
           />
           <FilterDropdown
             label="Status"
             options={statusOptions}
             selectedValues={filters.status}
             onSelectionChange={(values) => onFiltersChange({ status: values })}
-            buttonClass="rounded-full px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
+            buttonClass="rounded-full px-4 py-1 text-sm font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
           />
           <button
-            className={`rounded-full px-3 py-1 text-xs font-medium border ${filters.showWeakChapters ? 'bg-blue-100 text-blue-700 border-blue-400 dark:bg-blue-900 dark:text-blue-200' : 'bg-gray-100 dark:bg-gray-800 text-gray-500 border-gray-200 dark:border-gray-700'}`}
+            className={`rounded-full px-4 py-1 text-sm font-medium border ${filters.showWeakChapters ? 'bg-blue-100 text-blue-700 border-blue-400 dark:bg-blue-900 dark:text-blue-200' : 'bg-gray-100 dark:bg-gray-800 text-gray-500 border-gray-200 dark:border-gray-700'}`}
             onClick={() => onFiltersChange({ showWeakChapters: !filters.showWeakChapters })}
           >
             Weak
@@ -77,13 +77,13 @@ export function Header({ activeSubject, filters, onFiltersChange, chaptersCount,
             <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
               Showing all chapters ({chaptersCount})
             </span>
-            <button
+            <span
               onClick={toggleSort}
-              className="flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-blue-600 hover:text-blue-700 border border-transparent bg-transparent"
+              className="flex items-center gap-1 text-blue-600 cursor-pointer select-none"
             >
-              <ArrowUpDown className="h-4 w-4 text-blue-600" />
-              <span>Sort</span>
-            </button>
+              <ArrowUpDown className="h-4 w-4" />
+              Sort
+            </span>
           </div>
         </div>
       </div>
@@ -120,26 +120,23 @@ export function Header({ activeSubject, filters, onFiltersChange, chaptersCount,
           options={['11', '12']}
           selectedValues={filters.classes}
           onSelectionChange={(values) => onFiltersChange({ classes: values })}
-          buttonClass="rounded-full px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
         />
         <FilterDropdown
           label="Units"
           options={units}
           selectedValues={filters.units}
           onSelectionChange={(values) => onFiltersChange({ units: values })}
-          buttonClass="rounded-full px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
         />
         <FilterDropdown
           label="Status"
           options={statusOptions}
           selectedValues={filters.status}
           onSelectionChange={(values) => onFiltersChange({ status: values })}
-          buttonClass="rounded-full px-3 py-1 text-xs font-medium border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800"
         />
         <Button
           variant={filters.showWeakChapters ? "default" : "outline"}
           onClick={() => onFiltersChange({ showWeakChapters: !filters.showWeakChapters })}
-          className="rounded-full px-3 py-1 text-xs font-medium bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+          className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
         >
           Weak Chapters
         </Button>
@@ -160,13 +157,13 @@ export function Header({ activeSubject, filters, onFiltersChange, chaptersCount,
           <span className="text-sm text-gray-600 dark:text-gray-400">
             Showing all chapters ({chaptersCount})
           </span>
-          <button
+          <span
             onClick={toggleSort}
-            className="flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-blue-600 hover:text-blue-700 border border-transparent bg-transparent"
+            className="flex items-center gap-1 text-blue-600 cursor-pointer select-none"
           >
-            <ArrowUpDown className="h-4 w-4 text-blue-600" />
-            <span>Sort</span>
-          </button>
+            <ArrowUpDown className="h-4 w-4" />
+            Sort
+          </span>
         </div>
       </div>
     </div>
