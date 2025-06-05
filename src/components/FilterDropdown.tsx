@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -10,13 +9,15 @@ interface FilterDropdownProps {
   options: string[];
   selectedValues: string[];
   onSelectionChange: (values: string[]) => void;
+  buttonClass?: string;
 }
 
 export function FilterDropdown({
   label,
   options,
   selectedValues,
-  onSelectionChange
+  onSelectionChange,
+  buttonClass = ''
 }: FilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,7 +40,7 @@ export function FilterDropdown({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="justify-between min-w-[120px] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+          className={`justify-between min-w-[100px] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 ${buttonClass}`}
         >
           {displayText}
           <ChevronDown className="h-4 w-4 opacity-50" />

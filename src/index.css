@@ -99,3 +99,45 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 640px) {
+  .filters {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .chapter-list {
+    font-size: 14px !important;
+  }
+  .chapter-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 12px !important;
+  }
+  .header-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  .header-title {
+    font-size: 1.25rem !important;
+  }
+  .sidebar {
+    display: none !important;
+  }
+  .mobile-header {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+  }
+  .dark .mobile-header {
+    background: #18181b !important;
+    color: #fff !important;
+    border-bottom: 1px solid #27272a;
+  }
+}

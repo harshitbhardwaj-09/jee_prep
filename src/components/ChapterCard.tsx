@@ -1,10 +1,10 @@
-
 import { Chapter } from '@/types';
 import { cn } from '@/lib/utils';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 
 interface ChapterCardProps {
   chapter: Chapter;
+  highlightWeak?: boolean;
 }
 
 const iconMap: Record<string, string> = {
@@ -20,12 +20,15 @@ const iconMap: Record<string, string> = {
   'triangle': '△'
 };
 
-export function ChapterCard({ chapter }: ChapterCardProps) {
+export function ChapterCard({ chapter, highlightWeak }: ChapterCardProps) {
   const questionChange = chapter.questions2025 - chapter.questions2024;
   const isIncrease = questionChange > 0;
   
   return (
-    <div className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+    <div className={cn(
+      "flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors chapter-card",
+      highlightWeak && chapter.isWeak && "bg-blue-50 dark:bg-blue-950"
+    )}>
       <div className="flex items-center gap-4">
         <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-lg">
           {iconMap[chapter.icon] || '📚'}

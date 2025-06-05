@@ -1,4 +1,3 @@
-
 import { Chapter } from '@/types';
 
 export const mockChapters: Chapter[] = [
@@ -149,13 +148,8 @@ export const getUniqueClasses = (subject: string): string[] => {
   return [...new Set(chapters.map(chapter => chapter.class))].sort();
 };
 
-export const getUniqueUnits = (subject: string, selectedClasses: string[] = []): string[] => {
-  let chapters = mockChapters.filter(chapter => chapter.subject === subject);
-  
-  if (selectedClasses.length > 0) {
-    chapters = chapters.filter(chapter => selectedClasses.includes(chapter.class));
-  }
-  
+export const getUniqueUnits = (subject: string, _selectedClasses: string[] = []): string[] => {
+  const chapters = mockChapters.filter(chapter => chapter.subject === subject);
   const allUnits = chapters.flatMap(chapter => chapter.units);
   return [...new Set(allUnits)].sort();
 };

@@ -1,12 +1,12 @@
-
 import { Chapter } from '@/types';
 import { ChapterCard } from './ChapterCard';
 
 interface ChapterListProps {
   chapters: Chapter[];
+  highlightWeak?: boolean;
 }
 
-export function ChapterList({ chapters }: ChapterListProps) {
+export function ChapterList({ chapters, highlightWeak }: ChapterListProps) {
   if (chapters.length === 0) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -21,9 +21,9 @@ export function ChapterList({ chapters }: ChapterListProps) {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 chapter-list">
       {chapters.map((chapter) => (
-        <ChapterCard key={chapter.id} chapter={chapter} />
+        <ChapterCard key={chapter.id} chapter={chapter} highlightWeak={highlightWeak} />
       ))}
     </div>
   );
